@@ -1,8 +1,7 @@
 import React from "react";
 import Logo from "../assets/icons/logo_ishelter_1.png";
 import { useNavigate } from "react-router-dom";
-import { login } from "../utils/authentication";
-import { AuthWidget, LoginButton } from "./authWidgets/authWidgets";
+import { AuthWidget } from "./authWidgets/authWidgets";
 
 const Navbar = () => {
   let navigate = useNavigate();

@@ -13,15 +13,21 @@ const AuthButton = ({clickHandler, children}) => {
     )
 }
 
-export const LoginButton = (props) => {
+const LoginButton = (props) => {
 
     const loginAction = () => {
         login()
             .then(()=>{
                 checkLogin()
-                    .then((status)=>{
-                        props.setState(status.loggedIn);
-                    })
+                    .then(status=>{
+                        const state = {
+                            status: status.loggedIn,
+                            photoURL: ""
+                        }
+                        if (status.photoURL) {
+                            state.photoURL = status.photoURL;
+                        } 
+                        props.setState(state)})
             })
     }
 
@@ -32,11 +38,11 @@ export const LoginButton = (props) => {
     )
 }
 
-export const LogoutButton = (props) => {
+const LogoutButton = (props) => {
 
     const logoutAction = () => {
         logout();
-        props.setState(false);
+        props.setState({status: false, photoURL: ""});
     }
 
     return (
@@ -46,18 +52,46 @@ export const LogoutButton = (props) => {
     )
 }
 
+const LoggedInAs = () => {
+    const photoURL = localStorage.getItem("userPhotoURL")
+    const userName = localStorage.getItem("userName") ? localStorage.getItem("userName") : ""
+
+    return (
+        <div className="flex profile-pic">
+            
+            <div className="px-3">
+                <p>Logged In As</p>
+                <p>{userName}</p>
+            </div>
+            {photoURL ? <img src={photoURL} alt="photo" className="rounded-full px-3"/> : <></>}
+            
+        </div>
+    )
+
+}
+
 export const AuthWidget = (props) => {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState({status: false, photoURL: ""});
 
     useEffect(()=>{
         checkLogin()
-            .then(status=>setLoggedIn(status.loggedIn))
-    }, [loggedIn])
+            .then(status=>{
+                const state = {
+                    status: status.loggedIn,
+                    photoURL: ""
+                }
+                if (status.photoURL) {
+                    state.photoURL = status.photoURL;
+                } 
+                setLoggedIn(state)
+
+            })
+    }, [])
 
     return (
         <>
-            {loggedIn ? 
-                <LogoutButton setState={setLoggedIn} /> : 
+            {loggedIn.status ? 
+                <><LogoutButton setState={setLoggedIn} /> </>: 
                 <LoginButton setState={setLoggedIn} />
                 }
         </>
