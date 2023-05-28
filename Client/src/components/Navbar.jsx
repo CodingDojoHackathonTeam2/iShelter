@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../assets/icons/logo_ishelter_1.png";
 import { useNavigate } from "react-router-dom";
+import { login } from "../utils/authentication";
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -74,7 +75,7 @@ const Navbar = () => {
       </div>
       <div class="navbar-end">
         <a
-          onClick={() => navigate("/login")}
+          onClick={login}
           class="btn btn-accent bg-yellow-300 hover:bg-yellow-500 text-black font-bold "
         >
           Sign in
