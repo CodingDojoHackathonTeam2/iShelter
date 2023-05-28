@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { login, logout, checkLogin } from "../../utils/authentication"
 
-const AuthButton = ({clickHandler, children}) => {
+export const AuthButton = ({clickHandler, children}) => {
 
     return (
         <button
             className="btn btn-accent bg-yellow-300 hover:bg-yellow-500 text-black font-bold"
             onClick={clickHandler}
             >
-            {children}
+            {children ? children : "button text"}
         </button>
     )
 }
@@ -57,13 +57,13 @@ const LoggedInAs = () => {
     const userName = localStorage.getItem("userName") ? localStorage.getItem("userName") : ""
 
     return (
-        <div className="flex profile-pic">
+        <div className="flex">
             
             <div className="px-3">
                 <p>Logged In As</p>
                 <p>{userName}</p>
             </div>
-            {photoURL ? <img src={photoURL} alt="photo" className="rounded-full px-3"/> : <></>}
+            {photoURL ? <img src={photoURL} alt="photo" className="rounded-full profile-pic"/> : <></>}
             
         </div>
     )
@@ -91,7 +91,7 @@ export const AuthWidget = (props) => {
     return (
         <>
             {loggedIn.status ? 
-                <><LogoutButton setState={setLoggedIn} /> </>: 
+                <><LogoutButton setState={setLoggedIn} /><LoggedInAs/></> : 
                 <LoginButton setState={setLoggedIn} />
                 }
         </>
