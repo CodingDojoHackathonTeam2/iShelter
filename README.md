@@ -2,7 +2,7 @@
 iShelter is an open source app that allows volunteer hosts to post their accommodations for refugees displaced by war or other hardship. 
 
 # Winner First Place in the Coding Dojo 2022 Hackathon
-- Rene Caceres, Team Lead
+- Rene Caceres, Team Lead [LinkedIn](https://www.linkedin.com/in/renecaceresdeveloper/) [GitHub](https://github.com/caceresrene)
 - Lee Aarron, Frontend Developer
 - Jhomar Astuyauri, Backend Developer
 - Damian Cardenas, Frontend Developer
