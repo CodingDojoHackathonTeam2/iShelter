@@ -91,18 +91,15 @@ export class Host {
         return res.id; 
     }
 
-    async update(): Promise<boolean> {
-        const ref = doc(db, Host.TABLE, this.uid);
-        try {
-            const dataObj: object = Host.converter.toFirestore(this);
-            await setDoc(ref, dataObj);
-            return true;
-
-        } catch (error) {
-            console.error("Failed to save document");
-            console.error((error as Error).message);
-            return false;
-        }
+    static async getALL(): Promise<Array<Host>> {
+        const results: Host[] = [];
+        const querySnapshot = await getDocs(Host.COLLECTION);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            const record = {["uid"]:doc.id, ...doc.data()}
+            results.push(new Host(record));
+          });
+        return results;
     }
 
     static async getById(hostId: string): Promise<Host | null> {
@@ -135,6 +132,20 @@ export class Host {
         } else {
             console.log("Didn't find any")
             return null;
+        }
+    }
+
+    async update(): Promise<boolean> {
+        const ref = doc(db, Host.TABLE, this.uid);
+        try {
+            const dataObj: object = Host.converter.toFirestore(this);
+            await setDoc(ref, dataObj);
+            return true;
+
+        } catch (error) {
+            console.error("Failed to save document");
+            console.error((error as Error).message);
+            return false;
         }
     }
 
