@@ -5,7 +5,7 @@ export const AuthButton = ({clickHandler, children}) => {
 
     return (
         <button
-            className="btn btn-accent bg-yellow-300 hover:bg-yellow-500 text-black font-bold"
+            className="btn btn-accent bg-yellow-300 hover:bg-yellow-500 text-black font-bold auth-btn"
             onClick={clickHandler}
             >
             {children ? children : "button text"}
