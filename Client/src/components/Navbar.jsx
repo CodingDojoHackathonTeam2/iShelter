@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../assets/icons/logo_ishelter_1.png";
 import { useNavigate } from "react-router-dom";
+import { AuthButton, AuthWidget } from "./authWidgets/authWidgets";
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -73,12 +74,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div class="navbar-end">
-        <a
-          onClick={() => navigate("/login")}
-          class="btn btn-accent bg-yellow-300 hover:bg-yellow-500 text-black font-bold "
-        >
-          Sign in
-        </a>
+        <AuthWidget/>
       </div>
     </div>
   );

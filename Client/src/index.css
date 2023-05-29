@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.profile-pic {
+    height: 48px;
+}
+
+.auth-btn {
+    color: black;
+}
+
+.auth-btn:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(194 120 3/var(--tw-bg-opacity));
+}
