@@ -8,13 +8,13 @@ const Navbar = () => {
 
 
   return (
-    <div class="navbar bg-blue-500 text-white sticky top-0 z-50">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost lg:hidden">
+    <div className="navbar bg-blue-500 text-white sticky top-0 z-50">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabindex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -29,7 +29,7 @@ const Navbar = () => {
           </label>
           <ul
             tabindex="0"
-            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-blue-500 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-blue-500 rounded-box w-52"
           >
             <li>
               <a onClick={() => navigate("/map")}>Find a Safe Place</a>
@@ -53,8 +53,8 @@ const Navbar = () => {
           <span className="text-yellow-500">i</span>Shelter
         </a>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">
           <li>
             <a onClick={() => navigate("/map")}>Find a Safe Place</a>
           </li>
@@ -73,7 +73,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div class="navbar-end">
+      <div className="navbar-end">
         <AuthWidget/>
       </div>
     </div>

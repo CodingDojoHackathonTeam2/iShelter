@@ -8,6 +8,7 @@ import LogReg from './pages/LogReg';
 import MapSearch from './pages/MapSearch';
 import Anounncement from './pages/Anounncement';
 import Team from './pages/Team';
+import Profile from './pages/Profile';
 
 function App() {
 	const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -22,6 +23,7 @@ function App() {
 				<Route path='/map' element={<MapSearch />} />
 				<Route path='/anounncement' element={<Anounncement />} />
 				<Route path='/team' element={<Team />} />
+				<Route path='/profile' element={<Profile />} />
 			</Routes>
 			<Footer />
 		</>
