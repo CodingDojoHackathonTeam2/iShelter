@@ -77,7 +77,7 @@ const ProfileForm = ({ hostData, setHostData }): any => {
                     <label htmlFor='region'>State/Province/Region</label>
                     <input
                         className='px-2 rounded outline-none bg-white focus:ring-2 ring-blue-500'
-                        name='region'
+                        name='state'
                         type='text'
                         value={hostData.state}
                         onChange={(e) => handleChange(e)}
@@ -118,6 +118,38 @@ const ProfileForm = ({ hostData, setHostData }): any => {
             </button>
         </form>
     )
+}
+
+const ProfileInfo = ({hostData}): any => {
+
+    return (
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md p-6">
+            <h2 className="text-3xl mb-4">My Profile Info</h2>
+
+            <div className="mb-4">
+                <h3 className="text-2xl font-semibold mb-2">Name</h3>
+                <p className="text-gray-700 text-lg">{hostData.firstName} {hostData.lastName}</p>
+            </div>
+
+            <div className="mb-4">
+                <h3 className="text-2xl font-semibold mb-2">Contact Info</h3>
+                <p className="text-gray-700 text-lg">Email: {hostData.email}</p>
+                <p className="text-gray-700 text-lg">Phone: {hostData.phone}</p>
+            </div>
+
+            <div>
+                <h3 className="text-2xl font-semibold mb-2">Address</h3>
+                <p className="text-gray-700 text-lg">{hostData.street}</p>
+                {hostData.street2.length > 0 ? 
+                    <p className="text-gray-700 text-lg">{hostData.street2}</p>
+                    : <></>
+                }
+                <p className="text-gray-700 text-lg">{hostData.city}, {hostData.state} {hostData.postal}</p>
+                <p className="text-gray-700 text-lg">{hostData.country}</p>
+            </div>
+        </div>
+    )
+
 }
 
 const Profile = (): any => {
@@ -188,7 +220,7 @@ const Profile = (): any => {
                 </Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content value='myProfile'>
-                <p>My Info</p>
+                <ProfileInfo hostData={hostData}/>
             </Tabs.Content>
             <Tabs.Content value='updateProfile'>
                 <ProfileForm hostData={hostData} setHostData={setHostData} />
