@@ -14,3 +14,8 @@
     --tw-bg-opacity: 1;
     background-color: rgb(194 120 3/var(--tw-bg-opacity));
 }
+
+.address-group {
+    display: flex;
+    flex-direction: column;
+}
